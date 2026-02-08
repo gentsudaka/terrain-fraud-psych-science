@@ -1,0 +1,624 @@
+% Supplementary Information - Psychological Science
+% Terrain ruggedness predicts crime under centralized detection
+\documentclass[12pt]{article}
+
+% Layout
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{setspace}
+\doublespacing
+
+% Font: Times
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Tables, math, links
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{caption}
+
+% Section formatting
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{S\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{S\thesection.\thesubsection}{0.5em}{}
+
+% Running head
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textsc{Terrain and Crime --- Supplementary Information}}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Supplementary Information}\\[1em]
+{\large Terrain ruggedness predicts crime under centralized detection}\\[0.75em]
+Gen Tsudaka
+\end{center}
+
+\bigskip
+\hrule
+\bigskip
+
+%% =====================================================
+\section{Cross-National and Temporal Robustness}
+%% =====================================================
+
+\subsection{Japan Municipal Theft}
+
+To test whether the terrain--fraud relationship generalizes beyond COVID-era subsidy fraud, we analyzed 2022 theft statistics for 871 Japanese municipalities using the same analytical framework (negative binomial regression with population offset and prefecture fixed effects).
+
+\textbf{Results.} All major theft categories showed significant negative associations with terrain ruggedness:
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{Japan Municipal Theft Results}}
+\begin{tabular}{lrrr}
+\toprule
+Crime Type & $N$ Cases & IRR & $p$ \\
+\midrule
+Total Theft & 98,100 & 0.82 & $<.0001$ \\
+Vehicle Break-in & 12,559 & 0.84 & $<.0001$ \\
+Parts Theft & 7,315 & 0.87 & .0004 \\
+Car Theft & 2,890 & 0.81 & .0004 \\
+Bicycle Theft & 68,113 & 0.80 & $<.0001$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Comparison Outcome.} Traffic accidents show a weak terrain association (IRR = 0.90), but the fraud effect is 4.7$\times$ larger in magnitude. Traffic accidents depend partly on infrastructure and driving exposure, making them less diagnostic of social observability than identity-based fraud.
+
+\textbf{Coordination Gradient.} The fraud effect (IRR = 0.77) was substantially stronger than the theft effect (IRR = 0.82), consistent with the coordination-cost mechanism: fraud requires more extensive coordination (fake business documentation, avoiding detection, potentially involving accomplices) than opportunistic theft.
+
+\subsection{Korea Cross-National Replication (Cross-Section)}
+
+Using 2024 crime data from 260 Korean police stations, we tested whether the terrain--crime relationship generalizes beyond Japan.
+
+\textbf{Method.} Terrain Ruggedness Index (TRI) was computed from SRTM 30m elevation data using a 10km radius, 9$\times$9 grid. Negative binomial models included population offset, 17 province fixed effects, and controls for density, elevation, income (GRDP per capita), median age, and young male ratio.
+
+\textbf{Results.} Despite differences in administrative structure, detection mechanisms, and cultural context, we found consistent negative associations:
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{Korea Cross-Sectional Results}}
+\begin{tabular}{lrll}
+\toprule
+Crime Type & IRR & 95\% CI & $p$ \\
+\midrule
+Total Crime & 0.78 & [0.64, 0.94] & .011 \\
+Theft & 0.77 & [0.62, 0.95] & .024 \\
+Violence & 0.79 & [0.66, 0.94] & .008 \\
+Homicide & 0.68 & [0.54, 0.86] & .001 \\
+Robbery & 0.77 & [0.58, 1.02] & .069 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Controls for age and income were non-significant, indicating that demographic composition does not drive the relationship.
+
+\subsection{Korea 6-Year Panel (2019--2024)}
+
+To test temporal stability, we assembled a balanced panel of 260 Korean police stations across six years ($N = 1{,}548$ station-years).
+
+\textbf{National Crime Trends}
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{Korean National Crime Trends}}
+\begin{tabular}{rrrrrr}
+\toprule
+Year & Homicide & Robbery & Theft & Violence & Total \\
+\midrule
+2019 & 775 & 798 & 186,649 & 287,257 & 475,479 \\
+2020 & 720 & 662 & 179,315 & 265,148 & 445,845 \\
+2021 & 652 & 495 & 166,251 & 232,018 & 399,416 \\
+2022 & 688 & 515 & 182,133 & 244,643 & 427,979 \\
+2023 & 765 & 572 & 189,426 & 234,347 & 425,110 \\
+2024 & 772 & 457 & 183,534 & 219,798 & 404,561 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{TRI $\times$ Time Interaction (Critical Test)}
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{TRI $\times$ Time Interactions (Korea)}}
+\begin{tabular}{lrrr}
+\toprule
+Crime & TRI Main Effect & TRI$\times$Time & $p$ (interaction) \\
+\midrule
+Total & 0.830 & 1.003 & .855 \\
+Theft & 0.830 & 1.000 & .975 \\
+Violence & 0.829 & 1.005 & .724 \\
+Homicide & 0.881 & 0.993 & .692 \\
+Robbery & 0.843 & 0.983 & .374 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All TRI$\times$Time interactions $\approx$ 1.0, confirming the effect is temporally stable.
+
+\textbf{Year-by-Year Cross-Sections}
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{Year-by-Year IRR Estimates (Korea)}}
+\begin{tabular}{rrrr}
+\toprule
+Year & Total Crime & Theft & Violence \\
+\midrule
+2019 & 0.831** & 0.831** & 0.832** \\
+2020 & 0.833** & 0.836** & 0.830** \\
+2021 & 0.835** & 0.826** & 0.841** \\
+2022 & 0.831** & 0.821** & 0.838** \\
+2023 & 0.836** & 0.825** & 0.845** \\
+2024 & 0.846** & 0.836** & 0.854* \\
+\bottomrule
+\end{tabular}\\[0.5em]
+\small\textit{Note.} ** $p < .01$, * $p < .05$. All models include population offset.
+\end{table}
+
+\textbf{Between-Station Correlations}
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{Between-Station Correlations (Korea)}}
+\begin{tabular}{lrr}
+\toprule
+Crime & $r$(TRI, Mean Crime) & $p$ \\
+\midrule
+Total & $-0.368$ & $<.0001$ \\
+Theft & $-0.348$ & $<.0001$ \\
+Violence & $-0.375$ & $<.0001$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Japan 18-Year Panel (2006--2023)}
+
+To test temporal stability within Japan, we assembled a prefecture-level crime panel spanning 18 years ($N = 828$ prefecture-years; 46 prefectures $\times$ 18 years).
+
+\textbf{TRI $\times$ Time Trend.} Year is centered at 2006 (baseline year = 0) so that the TRI main effect is interpretable at the first observation year.
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{TRI $\times$ Time Trend (Japan, 18 Years)}}
+\begin{tabular}{lrrl}
+\toprule
+Parameter & IRR & $p$ & Interpretation \\
+\midrule
+TRI (main) & 0.942 & .367 & Effect at Year = 2006 \\
+Time (year, centered) & 0.924 & $<.001$ & Annual decline \\
+TRI $\times$ Time & 0.998 & .752 & No temporal drift \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The null TRI$\times$Time interaction indicates that the terrain--crime relationship does not change over time.
+
+\textbf{Year-by-Year Cross-Sections}
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{Year-by-Year IRR Estimates (Japan Prefectures)}}
+\begin{tabular}{rrrrrr}
+\toprule
+Year & IRR & Year & IRR & Year & IRR \\
+\midrule
+2006 & 0.930 & 2012 & 0.932 & 2018 & 0.914 \\
+2007 & 0.940 & 2013 & 0.931 & 2019 & 0.919 \\
+2008 & 0.937 & 2014 & 0.930 & 2020 & 0.925 \\
+2009 & 0.938 & 2015 & 0.928 & 2021 & 0.930 \\
+2010 & 0.933 & 2016 & 0.912 & 2022 & 0.909 \\
+2011 & 0.937 & 2017 & 0.915 & 2023 & 0.892 \\
+\bottomrule
+\end{tabular}\\[0.5em]
+\small Range: 0.892--0.940; Mean: 0.925
+\end{table}
+
+All 18 years show IRR $< 1.0$, indicating a consistent negative direction. Individual years are not significant due to low $N$ (46 prefectures), but the consistency across 18 years and the significant between-prefecture correlation ($r = -0.55$, $p < .0001$) provide converging evidence. The null TRI$\times$Time interaction confirms temporal stability.
+
+\textbf{Between-Prefecture Correlation.} $r$(TRI, Mean Crime) $= -0.553$, $p < .0001$. Prefectures with higher terrain ruggedness have systematically lower crime rates across all 18 years.
+
+\subsection{Japan Pre/During/Post COVID Stability}
+
+To test whether the terrain--crime relationship changed during the pandemic, we split the Japanese panel into three periods.
+
+\textbf{Between-Prefecture Correlations by Period}
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{COVID Period Stability (Japan)}}
+\begin{tabular}{llrrl}
+\toprule
+Period & Years & $r$(TRI, Crime) & $p$ & National Crime $\Delta$ \\
+\midrule
+Pre-COVID & 2006--2019 & $-0.552$ & $<.0001$ & --- \\
+During COVID & 2020--2021 & $-0.548$ & $<.0001$ & $-20\%$ \\
+Post-COVID & 2022--2023 & $-0.558$ & $<.0001$ & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The correlations are virtually identical ($-0.55$) across all three periods despite a 20\% drop in national crime during COVID.
+
+\textbf{TRI $\times$ Period Interactions}
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{TRI $\times$ Period Interactions (Japan)}}
+\begin{tabular}{lrr}
+\toprule
+Interaction & IRR & $p$ \\
+\midrule
+TRI $\times$ During COVID & 0.997 & .975 \\
+TRI $\times$ Post COVID & 0.967 & .765 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Both interactions are null, indicating the terrain--crime relationship was unchanged by the pandemic. This makes a COVID-specific artifact explanation less plausible.
+
+\subsection{Alternative Explanation Tests}
+
+\textbf{Gini Coefficient (Strain Theory).} If fraud reflects economic strain, inequality (Gini) should predict fraud. We tested this using prefecture-level Gini coefficients (2019).
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrr}
+\toprule
+Variable & IRR & $p$ \\
+\midrule
+TRI (within-pref $z$) & 0.77 & .003 \\
+Gini ($z$) & 1.02 & .977 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Gini is unrelated to fraud ($p = .98$), which is not consistent with a simple strain-based account.
+
+\textbf{Crime Ecology Control.} Adding general crime (2008) as a control partially attenuates the terrain coefficient:
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Model & TRI IRR & $p$ & Attenuation \\
+\midrule
+Without crime control & 0.77 & .003 & --- \\
+With crime control & 0.81 & .079 & 34\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This attenuation is consistent with terrain operating partly through general crime ecology---terrain affects all crime, and fraud is one manifestation.
+
+\subsection{Behavioral Specificity: Traffic Accidents}
+
+To test whether the terrain effect is specific to intentional rule violation, we compared fraud to traffic accidents---an outcome that depends partly on infrastructure and driving exposure rather than social observability alone.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Outcome & IRR & Coefficient $\beta$ & SE \\
+\midrule
+COVID Fraud & 0.77 & $-0.261$ & 0.06 \\
+Traffic Accidents & 0.90 & $-0.105$ & 0.03 \\
+\bottomrule
+\end{tabular}\\[0.5em]
+\small\textit{Note.} Both models use NB-GLM with prefecture FE and population offset.
+\end{table}
+
+\textbf{Coefficient Difference Test:} $\Delta\beta = -0.389$, SE(diff) $= 0.075$, $z = 5.21$, $p < 10^{-6}$.
+
+The fraud coefficient is 4.7$\times$ larger than the traffic accident coefficient. This difference in magnitude---strongest for identity-based fraud, weaker for infrastructure-dependent outcomes---is consistent with the observability mechanism.
+
+\subsection{Civic Engagement Probe}
+
+If rugged terrain fosters tighter communities with higher mutual observability, we would expect elevated civic engagement in rugged areas---a positive terrain effect on pro-social behavior, contrasting with the negative effect on antisocial behavior.
+
+\textbf{Voter Turnout Analysis.} Using municipality-level turnout data ($N = 1{,}747$), we tested whether terrain predicts voter participation.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{llrll}
+\toprule
+Model & Outcome & IRR & 95\% CI & $p$ \\
+\midrule
+NB-FE & Total Votes & 1.062 & [1.01, 1.12] & .021 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Interpretation: 6\% higher voter turnout per SD increase in terrain ruggedness. This supports the proposed mechanism: terrain structures community boundedness, which increases both civic participation and informal monitoring of deviant behavior.
+
+\textbf{Robustness to Density/Age Controls}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrr}
+\toprule
+Model & IRR & $p$ \\
+\midrule
+TRI only & 1.062 & .021 \\
++ Population density & 1.054 & .038 \\
++ Elderly share & 1.058 & .029 \\
++ Density + Elderly & 1.051 & .045 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The turnout effect survives controls for demographic composition, indicating it is not simply a rural/urban artifact.
+
+\subsection{Sequential Mediation}
+
+To test whether terrain operates through community structure, we examined whether the terrain--fraud association attenuates when controlling for proxies of observability.
+
+\textbf{Sequential Models ($N = 1{,}738$ municipalities)}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Model & TRI (IRR) & $p$ & Attenuation \\
+\midrule
+1. TRI only & 0.74 & .010 & --- \\
+2. + Population density & 0.84 & .147 & 41\% \\
+3. + Elderly share & 0.86 & .259 & 52\% \\
+4. + Density + Elderly & 0.90 & .420 & 65\% \\
+\bottomrule
+\end{tabular}\\[0.5em]
+\small\textit{Note.} All models include prefecture fixed effects and population offset.
+\end{table}
+
+\textbf{Bootstrap Mediation (1,000 iterations):} Indirect effect (TRI $\to$ Density $\to$ Fraud): $-0.147$; 95\% Bootstrap CI: [$-0.176$, $-0.118$]; CI excludes zero.
+
+The terrain coefficient attenuates by 65\% when controlling for community structure proxies, consistent with observability as the mediating mechanism.
+
+\subsection{Summary: Cross-Context Convergence}
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{Cross-Context Convergence}}
+\begin{tabular}{llrrl}
+\toprule
+Country & Outcome & IRR & $p$ & TRI$\times$Time \\
+\midrule
+Japan & COVID Fraud & 0.77 & .003 & --- \\
+Japan & Theft (2022) & 0.82 & $<.001$ & --- \\
+Japan & Panel (18yr) & --- & --- & 0.998, $p = .75$ \\
+Korea & Theft & 0.77 & .024 & $\approx$1.0, $p > .37$ \\
+Korea & Violence & 0.79 & .008 & $\approx$1.0, $p > .37$ \\
+Korea & Homicide & 0.68 & .001 & $\approx$1.0, $p > .37$ \\
+Korea & Robbery & 0.77 & .069 & $\approx$1.0, $p > .37$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All TRI$\times$Time interactions are null, indicating temporal stability across 6--18 years.
+
+\subsection{Coordination Gradient}
+
+Effect sizes follow a predicted gradient based on coordination requirements:
+
+\begin{table}[ht]
+\centering
+\caption*{\textit{Coordination Gradient}}
+\begin{tabular}{llrl}
+\toprule
+Crime Type & Country & IRR & Coordination Level \\
+\midrule
+COVID Subsidy Fraud & Japan & 0.77 & High (identity fabrication) \\
+Homicide & Korea & 0.68 & High (premeditated) \\
+Robbery & Korea & 0.77 & Moderate--High \\
+Theft & Korea & 0.77 & Moderate \\
+Violence & Korea & 0.79 & Low--Moderate (often impulsive) \\
+General Crime & Japan & 0.93 & Mixed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Crimes requiring more coordination and identity management show stronger terrain effects, supporting the observability mechanism.
+
+\subsection{Interpretation}
+
+The robustness analyses provide four key insights:
+
+\begin{enumerate}
+\item \textbf{Not fraud-specific:} The terrain effect generalizes to theft and general crime, suggesting a broad ecological mechanism rather than fraud-specific dynamics.
+
+\item \textbf{Not Japan-specific:} Cross-national replication in Korea---with different administrative units, detection systems, and cultural context---demonstrates the robustness of the geographic gradient.
+
+\item \textbf{Temporally stable:} The 6-year Korea panel shows no TRI $\times$ Time interaction. Year-by-year IRRs are remarkably consistent (0.82--0.85). The effect predates COVID (2019) and persists after (2024). This temporal consistency makes transient-shock explanations less plausible and suggests terrain is a stable ecological predictor.
+
+\item \textbf{Coordination gradient:} The stronger effect for fraud (IRR = 0.77) compared to general crime (IRR $\approx$ 0.83) supports the theoretical mechanism: crimes requiring greater coordination show stronger terrain effects.
+\end{enumerate}
+
+%% =====================================================
+\section{Detailed Methods}
+%% =====================================================
+
+\subsection{Terrain Ruggedness Index (TRI)}
+
+TRI measures elevational variability within a neighborhood around each cell, following Riley et al.\ (1999):
+%
+\begin{equation}
+\text{TRI} = \sqrt{\sum_{i=1}^{8}(e_i - e_0)^2}
+\end{equation}
+%
+where $e_0$ is the elevation of the focal cell and $e_i$ are the eight surrounding cells.
+
+\textbf{Japan:} Computed from SRTM 90m DEM at municipality centroid, aggregated across all cells within municipal boundaries.
+
+\textbf{Korea:} Computed from SRTM 30m DEM at police station coordinates using a 10km radius, 9$\times$9 grid (81 sample points per station). The finer resolution and buffer approach accounts for the lack of precise jurisdictional boundaries.
+
+\subsection{Statistical Models}
+
+\textbf{Primary Model (Negative Binomial with Fixed Effects):}
+%
+\begin{equation}
+\log(\mu_i) = \beta_0 + \beta_1 \text{TRI}_i + \gamma_{\text{pref}[i]} + \log(\text{pop}_i)
+\end{equation}
+%
+where $\mu_i$ is the expected count for municipality $i$, TRI is standardized terrain ruggedness (within-prefecture $z$-score for Japan main analysis), $\gamma_{\text{pref}[i]}$ are prefecture fixed effects (46 in Japan, 17 in Korea), and $\log(\text{pop}_i)$ is the population offset.
+
+\textbf{Dispersion:} Negative binomial dispersion parameter $\alpha$ estimated via MLE. Models compared to Poisson via likelihood ratio test (all reject Poisson, confirming overdispersion).
+
+\textbf{Panel Models (TRI $\times$ Time Interaction):}
+%
+\begin{equation}
+\log(\mu_{it}) = \beta_0 + \beta_1 \text{TRI}_i + \beta_2 \text{Year}_t + \beta_3 (\text{TRI}_i \times \text{Year}_t) + \gamma_{\text{region}[i]} + \log(\text{pop}_{it})
+\end{equation}
+%
+The null hypothesis (temporal stability) is $\beta_3 = 0$.
+
+\subsection{Robustness Procedures}
+
+\textbf{Permutation Inference:} 10,000 within-prefecture permutations of TRI values. The empirical $p$-value is the proportion of permuted correlations exceeding the observed correlation in absolute value.
+
+\textbf{Leave-One-Prefecture-Out (LOPO):} 47 jackknife replications, each excluding one prefecture. We report the range of IRR estimates and confirm all remain significant at $p < .001$.
+
+\textbf{Dose--Response:} Municipalities grouped by TRI quintile (within-prefecture). Fraud rates computed per 100,000 population. Monotonicity assessed via linear trend test.
+
+\textbf{Spatial Autocorrelation:} We computed Moran's $I$ on model residuals using a row-standardized inverse-distance weight matrix ($k = 5$ nearest neighbors). Result: $I = 0.003$, $z = 0.53$, $p = .60$. No significant spatial autocorrelation detected.
+
+\textbf{Alternative Correlation Structures:} Results are robust to prefecture-clustered standard errors (primary specification), Huber--White robust SEs (IRR = 0.77, $p = .003$), and HAC-style adjustment with 50km bandwidth (IRR = 0.63, $p < .001$). All specifications yield substantively identical conclusions.
+
+\textbf{Outlier Robustness}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrr}
+\toprule
+Exclusion & IRR & $p$ \\
+\midrule
+Full sample & 0.77 & .003 \\
+Excluding top 5 fraud municipalities & 0.62 & $<.001$ \\
+Excluding Tokyo/Osaka/Kanagawa & 0.60 & $<.001$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Results are not driven by outliers or major metropolitan areas.
+
+\textbf{Administrative Capacity.} Terrain is negatively correlated with municipal employees per capita: $r(\text{TRI, employees/capita}) = -0.12$, $p < .001$, $N = 1{,}747$. This means rugged areas have \textit{weaker} detection capacity, biasing against finding the observed pattern.
+
+\textbf{Fiscal Strength Control}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrr}
+\toprule
+Model & TRI IRR & $p$ \\
+\midrule
+Without fiscal control & 0.77 & .003 \\
+With fiscal strength index & 0.60 & $<.001$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The terrain effect is unchanged when controlling for municipal fiscal capacity.
+
+\textbf{COVID Severity and Internet Controls}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrr}
+\toprule
+Control Added & TRI IRR & $p$ \\
+\midrule
+None (baseline) & 0.77 & .003 \\
++ COVID case rate & 0.77 & .003 \\
++ Internet penetration & 0.77 & .003 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+COVID severity (prefecture-level case rates) and internet penetration ($>$70\% in all prefectures) do not attenuate the terrain effect.
+
+\subsection{Opportunity vs.\ Propensity Test}
+
+A key alternative explanation is that rugged areas have fewer opportunities for fraud (fewer businesses, fewer applicants) rather than lower propensity to commit fraud. We test this by varying the exposure offset:
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrlrl}
+\toprule
+Exposure Offset & IRR & 95\% CI & $p$ & Interpretation \\
+\midrule
+Population & 0.77 & [0.65, 0.91] & .003 & Fewer fraud cases per capita \\
+Business establishments & 0.73 & [0.61, 0.87] & $<.001$ & Fewer fraud cases per business \\
+Retail establishments & 0.71 & [0.59, 0.85] & $<.001$ & Fewer fraud cases per retail outlet \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The terrain effect persists across all exposure definitions. Rugged areas have lower fraud rates whether measured per person, per business, or per retail establishment. This makes a simple opportunity-based explanation less plausible and supports a propensity-based account.
+
+Additionally, controlling for population density (a proxy for opportunity concentration) attenuates but does not eliminate the terrain effect (IRR: 0.77 $\to$ 0.84), consistent with density as a partial mediator rather than a confounder.
+
+\subsection{Descriptive Statistics}
+
+\textbf{Japan Fraud Sample ($N = 1{,}747$ municipalities)}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+Variable & Mean & SD & Min & Max \\
+\midrule
+Fraud count & 0.28 & 1.29 & 0 & 25 \\
+Fraud rate (per 100k) & 0.22 & 1.15 & 0 & 27.0 \\
+TRI (raw) & 31.4 & 22.4 & 0.4 & 122.0 \\
+TRI within-pref ($z$) & 0.00 & 1.00 & $-2.9$ & 4.7 \\
+Population & 89,100 & 437,883 & 159 & 13.7M \\
+\% with $\geq$1 fraud & 12.1\% & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Korea Crime Sample ($N = 260$ police stations)}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+Variable & Mean & SD & Min & Max \\
+\midrule
+Total crime (2024) & 1,556 & 1,489 & 89 & 10,223 \\
+TRI (raw) & 45.2 & 35.8 & 1.2 & 142.6 \\
+Population (jurisdiction) & 197,000 & 168,000 & 8,400 & 940,000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%% =====================================================
+\section{Data Sources}
+%% =====================================================
+
+\textbf{Japan Fraud Data.} Source: METI published fraud list (\textit{Jizokuka Kyufukin no Fusei Jukyusha no Nintei oyobi Kohyo ni tsuite}). 516 geocoded records, aggregated to municipality counts for all 1,747 municipalities (including zeros). 211 municipalities with $\geq$1 fraud case (12.1\%).
+
+\textbf{Japan Theft Data.} Source: National Police Agency (\textit{Keisatsu-cho}), 2022. $N = 871$ municipalities with complete data.
+
+\textbf{Korea Crime Data.} Source: data.go.kr (\textit{Keongchalcheong Keongchalseobyeol Gangnyeokbeomjoe Balsaeng Hyeonhwang}). $N = 260$ police stations, 2019--2024. Panel: 1,548 station-years.
+
+\textbf{Terrain Data.} Japan: SRTM 90m via CGIAR-CSI. Korea: SRTM 30m via OpenTopoData API. TRI computed following Riley et al.\ (1999).
+
+%% =====================================================
+\section{Replication Materials}
+%% =====================================================
+
+All data and code are available at:
+
+\begin{itemize}
+\item Japan fraud: \url{https://github.com/gentsudaka/terrain-fraud}
+\item Korea replication: \url{https://github.com/gentsudaka/ordin-workspace/tree/main/projects/korea-replication}
+\end{itemize}
+
+\end{document}

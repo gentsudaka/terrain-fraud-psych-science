@@ -1,0 +1,214 @@
+% Psychological Science submission - APA 7th Edition format
+\documentclass[man,floatsintext]{apa7}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+% Bibliography
+\usepackage[style=apa,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+% Title and authors
+\title{Flat terrain predicts fraud}
+\shorttitle{Terrain and Fraud}
+
+\authorsnames{[Author name removed for blind review]}
+\authorsaffiliations{
+  {[Affiliations removed for blind review]}
+}
+
+% ORCID
+\authornote{
+  [ORCID removed for blind review]
+
+  [Author]: Conceptualization, Methodology, Software, Data Curation, Formal Analysis, Visualization, Writing -- Original Draft, Writing -- Review \& Editing.
+
+  The author thanks [names removed for blind review] for generous comments and insights during the preparation of this manuscript.
+
+  The author declares no competing interests. This research received no specific funding.
+
+  Correspondence: [removed for blind review]
+
+  Data and code: [URL removed for blind review; will be made available upon acceptance]
+}
+
+% Abstract
+\abstract{
+Fraud clusters geographically even when enforcement is standardized. We test whether terrain ruggedness---by fragmenting populations and local information---predicts lower rule violation. Prior work shows rugged terrain predicts preferences for stronger governance; we test whether this extends to behavior. Using verified subsidy fraud from Japan's Business Continuity Support Grant ($N = 1{,}742$ municipalities), negative binomial models with prefecture fixed effects show each within-prefecture SD increase in ruggedness predicts 23\% fewer fraud cases (IRR = 0.77, 95\% CI [0.65, 0.91]). The gradient survives permutation inference ($p < 10^{-4}$), leave-one-out replications, and dose--response tests. It attenuates 65\% controlling for density and elderly share, consistent with an observability pathway. Convergent analyses show similar gradients for theft in Japan ($n = 871$) and crime in South Korea ($n = 260$); panel tests (6--18 years) show no terrain $\times$ time interactions. Ecology shapes compliance even under standardized enforcement.
+}
+
+\keywords{terrain ruggedness, risk taking, fraud, rule violation, socioecological psychology, Japan, Korea}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+Risk-taking is not merely a stable trait; it is a context-sensitive strategy. When people face constrained problem spaces---limited eligibility, scarce opportunities, or barriers to coordination---they may adopt high-variance strategies that promise immediate payoff at the cost of detection and sanction. When legitimate pathways are slow, blocked, or informationally costly, illicit strategies become comparatively more attractive despite sanction risk. In this sense, many crimes can be understood as illicit problem-solving: a risky strategy chosen when the expected value of rule-following is low relative to rule-breaking.
+
+A striking feature of rule violation is its geographic clustering. Governments lost over US\$100 billion to COVID-19 relief fraud in the United States alone \parencite{gao2023covid}, despite centralized digital application systems. The puzzle is not that fraud occurred---the puzzle is that it clustered geographically even when formal rules and detection were designed to be uniform \parencite{cohn2019civic, hanna2017dishonesty}. Social context predicts compliance when formal enforcement is held constant: diplomats from corrupt countries rack up more parking tickets when enforcement disappears \parencite{fisman2007corruption}, and people in rule-violating societies cheat more even in anonymous laboratory games \parencite{gachter2016intrinsic}. These patterns suggest that crime is not only a product of incentives and institutions, but also of local ecologies that shape observability, coordination, and the perceived risks of deception.
+
+Physical geography is one such ecology. Terrain ruggedness---elevational variability---fragments habitable space, obstructs travel, and complicates resource distribution \parencite{nunn2012ruggedness, michalopoulos2012origins, diamond1997guns}. Fragmentation reduces repeated cross-community interaction and slows reputational information flow, shifting the local cost structure of deception. In socioecological terms, ruggedness is a structural constraint on social interaction: it alters who encounters whom, how information travels, and how bounded communities become. Recent evidence suggests that these constraints can shape collective orientations toward governance. Across countries and U.S.\ states, rugged terrain predicts stronger endorsement of centralized authority (e.g., support for strong leaders and military rule) and more vertical, ``boss-like'' supervisory relations \parencite{tsudaka2025rugged}. These findings align with the interpretation that fragmented ecologies increase uncertainty and coordination demands, thereby increasing the appeal of stronger governance solutions \parencite{gotz2025unified}.
+
+Here we extend this logic from governance \emph{preferences} to governance \emph{consequences}: does the same ecological fragmentation shape how risk-taking manifests behaviorally as rule violation? Prior work established that rugged terrain predicts stronger endorsement of hierarchical governance \parencite{tsudaka2025rugged}; the present study tests whether the same ecology predicts lower rates of illicit behavior---linking governance preferences and rule-violation outcomes through a shared ecological mechanism. We propose that terrain shapes crime through observability (Figure~\ref{fig:conceptual}). Rugged terrain tends to produce smaller, more bounded communities in which residents are more likely to know one another (higher ``density of acquaintanceship''; \textcite{freudenburg1986density}). Such boundedness increases informal observability and the expected social and reputational costs of identity-based deception. In routine-activity terms, terrain can increase the availability of capable guardians \parencite{cohen1979social}, even when formal enforcement is centralized. Under this account, flatter terrain supports larger, more anonymous environments in which information travels less reliably through local ties, reducing informal detection risk and making illicit ``solutions'' more viable.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig0_conceptual.png}
+\caption{\textbf{Conceptual model: ecology shapes the behavioral expression of risk-taking.} Rugged terrain fragments populations and information flow, increasing uncertainty and coordination costs. Fragmented ecologies increase the appeal of stronger governance and also structure community observability. When local observability is high (dense acquaintanceship; reduced anonymity), identity-based deception becomes harder and risky problem-solving is less likely to manifest as crime; when anonymity is higher, illicit ``solutions'' become more feasible. Solid arrows denote the core hypothesized pathway; contextual moderators (e.g., settlement patterns and opportunity structure) can strengthen or attenuate the terrain gradient.}
+\label{fig:conceptual}
+\end{figure}
+
+Japan's Business Continuity Support Grant (\textit{Jizokuka Ky\={u}fukin}) provides an unusually clean test. The program processed 4.24 million awards totaling \textyen 5.5 trillion through a single centralized portal \parencite{meti2026fraud}. Detection and adjudication were centralized: no municipal auditors and no prefectural involvement in identifying fraud. This minimizes a central threat in geographic crime research---that spatial patterns reflect variation in policing and reporting rather than variation in behavior \parencite{levitt1998crime}.
+
+The design logic is as follows: formal enforcement is held constant (centralized intake, detection, and publication), while local social ecology varies naturally with terrain. If terrain predicts fraud despite standardized enforcement, the gradient must reflect ecological variation in behavior rather than institutional variation in detection. This setting thus provides unusually strong leverage for isolating the social-ecological contribution to rule violation.
+
+We therefore link administratively verified fraud to municipality-level terrain ruggedness across 1,742 municipalities. We test whether ruggedness predicts lower fraud incidence within prefectures, using negative binomial models with prefecture fixed effects and exposure offsets. We then subject the terrain effect to unusually strict robustness tests (permutation inference, leave-one-prefecture-out replications, and monotonic dose--response analyses). Finally, to evaluate generality beyond a single program and context, we examine whether the same ecological gradient appears in conventional crime data in Japan and in South Korea, including panel tests of temporal stability.
+
+\section*{Research Transparency Statement}
+
+\textbf{General Disclosures}
+
+\textbf{Conflicts of interest:} The author declares no competing interests. \textbf{Funding:} This research received no specific funding. \textbf{Artificial intelligence:} AI-assisted tools were used for editing; all statistical analyses were conducted and verified by the author. \textbf{Ethics:} This study uses publicly available, aggregated administrative data and does not involve human subjects interaction.
+
+\textbf{Study Disclosures}
+
+\textbf{Preregistration:} This study was not preregistered; all analyses are exploratory. \textbf{Materials:} All study materials are publicly available [URL removed for blind review]. \textbf{Data:} All data are publicly available [URL removed for blind review]. The analytical dataset, raw fraud records, and source data are included. \textbf{Analysis scripts:} All analysis scripts are publicly available [URL removed for blind review]. Full replication code is included.
+
+\section{Method}
+
+\subsection{Design Logic}
+
+The setting holds constant several features that typically confound geographic crime research, while allowing local social ecology to vary:
+
+\textit{Held constant:} Online application portal (no in-person municipal interaction), centralized fraud detection by the Small and Medium Enterprise Agency (no local auditors), standardized adjudication criteria, uniform publication rules for non-repayment cases.
+
+\textit{Varies naturally:} Local observability, anonymity, social information density, community boundedness---all shaped by terrain-induced settlement patterns.
+
+Any residual geographic pattern in detected fraud must therefore reflect variation in behavior (fraud commission) or in terrain-correlated selection into detection. We address the latter possibility directly below.
+
+\subsection{Data}
+
+The dependent variable is \textit{administratively verified fraud cases that reached publication criteria}: the Small and Medium Enterprise Agency recognized 2,473 fraudulent recipients; names and municipality-level locations are published for those who did not repay before formal demand. The agency published 517 geocodable fraudulent-recipient records; district-level cases are allocated fractionally among constituent municipalities. We aggregate these records to municipality-level counts and analyze all 1,742 inhabited Japanese municipalities (including zeros), excluding only the Northern Territories per international convention. This definition captures a specific bureaucratic outcome, not ``fraud in general.'' We compute terrain ruggedness from SRTM 90m elevation data following \textcite{riley1999terrain}. No observations were excluded from the analytic sample. All independent and dependent variables examined in the analysis are reported in this manuscript and the Supplementary Information.
+
+\subsection{Selection Concerns}
+
+Could the terrain gradient reflect geographic variation in detection rather than behavior? For this to occur, detection probability would need to be \textit{higher} in flatter areas---but the centralized pipeline provides no mechanism for such variation. Moreover, rugged areas have \textit{weaker} administrative capacity: terrain is negatively correlated with municipal employees per capita ($r = -0.12$, $p < .001$; see SI), which would bias toward \textit{more} undetected fraud in rugged areas---the opposite of what we observe. The terrain effect persists when controlling for municipal fiscal strength (see SI), further addressing administrative-capacity confounds.
+
+\subsection{Analysis}
+
+Negative binomial models with 46 prefecture fixed effects isolate within-prefecture terrain variation. Standard errors are clustered at the prefecture level to account for within-prefecture correlation. Population serves as an offset; business establishments provide an alternative exposure to test whether the effect reflects opportunity (fewer potential applicants) or propensity (lower fraud rates per opportunity). Permutation inference (10,000 within-prefecture shuffles) and leave-one-prefecture-out jackknife test robustness. Spatial autocorrelation is negligible (Moran's $I = 0.003$, $p = .60$); results are unchanged under alternative correlation structures (see SI).
+
+\section{Results}
+
+Municipalities with fraud sit 0.31 standard deviations below their prefecture mean in ruggedness ($d = -0.38$, $p < .001$; Figure~\ref{fig:descriptive}). The primary model yields IRR = 0.77 ($p = .003$, 95\% CI [0.65, 0.91]): one SD more rugged, 23\% fewer fraud cases. This pattern emerges despite centralized detection procedures that eliminate local enforcement discretion---terrain predicts fraud even when the formal detection pipeline is geographically uniform.
+
+To make the effect size concrete: municipalities in the flattest ruggedness quintile show higher fraud rates than those in the most rugged quintile (Figure~\ref{fig:robustness}c).
+
+Critically, the effect reflects \textit{propensity}, not opportunity. With business establishments as the exposure offset (rather than population), the terrain effect remains significant (IRR = 0.66, $p < .001$). This rules out the possibility that rugged areas simply have fewer businesses and thus fewer potential fraudsters; rugged areas have lower fraud rates \textit{per business}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/fig1_descriptive.png}
+\caption{Geographic distribution and descriptive patterns. (a) Distribution of published fraud cases across 1,742 municipalities: 87.1\% have zero; 12.9\% have one or more. (b) Within-prefecture terrain z-scores for municipalities with and without fraud. Fraud-affected municipalities are 0.31 SD flatter within their prefecture ($d = -0.38$, $p < .001$).}
+\label{fig:descriptive}
+\end{figure}
+
+\subsection{Robustness}
+
+The observed correlation exceeds all 10,000 permuted values ($p < 10^{-4}$; Figure~\ref{fig:robustness}a). Leave-one-prefecture-out estimates are stable across all 47 replications (Figure~\ref{fig:robustness}b). Terrain quintiles show a monotonic gradient from flattest to most rugged (Figure~\ref{fig:robustness}c).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/fig2_robustness.png}
+\caption{Robustness. (a) Permutation null distribution (10,000 within-prefecture shuffles). Observed correlation exceeds all permuted values ($p < 10^{-4}$). (b) Leave-one-prefecture-out jackknife: estimates stable across all 47 replications. Dashed line: full-sample estimate. (c) Dose-response: monotonic gradient from flattest to most rugged quintile. Error bars: $\pm$1 SEM.}
+\label{fig:robustness}
+\end{figure}
+
+\subsection{Alternative Explanations}
+
+Controlling for COVID-19 severity does not move the terrain coefficient. Internet penetration exceeds 70\% in all prefectures; controlling for it changes nothing. Gini is unrelated to fraud ($p = .98$), which is not consistent with a simple strain-based account in which inequality predicts fraud \parencite{cressey1953other}. Adding total criminal offenses partially attenuates the coefficient (see SI), consistent with terrain operating partly through general crime ecology. The estimate is unchanged when excluding the highest-fraud municipalities or the three largest prefectures (see SI).
+
+\subsection{Mechanism Consistency}
+
+The association concentrates in municipalities where fraud opportunities exist: significant in high-population areas ($p < .05$) but null in low-population areas where baseline fraud is near zero (Figure~\ref{fig:opportunity}). The fraud-clustering gradient strengthens with severity: municipalities with $\geq$1 fraud case are flatter than average; with $\geq$3 cases, even flatter (Figure~\ref{fig:clustering})---consistent with terrain disrupting the structural holes \parencite{burt1992structural} on which organized fraud depends.
+
+\subsection{Mechanism-Consistent Attenuation}
+
+If terrain operates through observability, the terrain--fraud association should attenuate when controlling for proxies of community structure. Sequential models support this prediction (Table~\ref{tab:mediation}). The baseline terrain effect (IRR = 0.74, $p = .010$) attenuates by 41\% when controlling for population density, by 52\% when controlling for elderly share, and by 65\% when controlling for both---reducing the terrain coefficient to non-significance (IRR = 0.90, $p = .42$). Bootstrap mediation tests confirm that the indirect path through density is significant (95\% CI excludes zero). These are observational proxies and do not identify causal mediation, but they test whether the terrain association behaves as expected if observability is a key pathway. The pattern is consistent with terrain shaping fraud through community boundedness and mutual observability rather than through unrelated confounds.
+
+\begin{table}[ht]
+\caption{Sequential Mediation: Terrain $\rightarrow$ Community Structure $\rightarrow$ Fraud}
+\label{tab:mediation}
+\begin{threeparttable}
+\begin{tabular}{lrrr}
+\toprule
+Model & TRI (IRR) & $p$ & Attenuation \\
+\midrule
+1. TRI only & 0.74 & .010 & --- \\
+2. + Population density & 0.84 & .147 & 41\% \\
+3. + Elderly share & 0.86 & .259 & 52\% \\
+4. + Density + Elderly & 0.90 & .420 & 65\% \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item \textit{Note.} All models include prefecture fixed effects and population offset. Attenuation = reduction in $\log$(IRR) relative to baseline. Table uses globally standardized TRI (not within-prefecture $z$) to express attenuation in comparable units across sequential models.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/fig3_opportunity.png}
+\caption{Opportunity structure. Split-sample IRR estimates by population density. The terrain effect is significant in high-population municipalities ($p < .05$) where fraud opportunities exist, but non-significant in low-population municipalities where baseline fraud is near zero. Points: IRR; error bars: 95\% CI; dashed line: IRR = 1.0 (null effect).}
+\label{fig:opportunity}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/fig4_clustering.png}
+\caption{Fraud clustering. Mean within-prefecture terrain z by fraud threshold. Municipalities with more fraud are progressively flatter, consistent with terrain disrupting coordination networks.}
+\label{fig:clustering}
+\end{figure}
+
+\subsection{Behavioral Specificity and Mechanism Probe}
+
+Two additional tests clarify the specificity and mechanism of the terrain effect. First, we compared fraud to traffic accidents---an outcome that depends partly on infrastructure and driving exposure rather than social observability alone. While terrain shows a weak association with accidents (IRR = 0.90), the fraud effect is 4.7 times larger in magnitude ($z = 5.21$, $p < 10^{-6}$ for the coefficient difference). This difference in magnitude---strongest for identity-based fraud, weaker for accidents---is consistent with the observability mechanism: behaviors requiring deliberate coordination and deception are more sensitive to terrain-induced social structure than outcomes driven primarily by infrastructure.
+
+Second, as a positive mechanism probe, we tested whether civic engagement is elevated in rugged areas. If terrain fosters tighter communities with higher mutual observability, voter turnout should increase with ruggedness. Consistent with this prediction, turnout is higher in more rugged municipalities (IRR = 1.06, $p = .021$); this effect survives controls for population density and age structure (see SI). This pattern supports the proposed mechanism: terrain structures community boundedness, which increases both civic participation and informal monitoring of norm-violating behavior.
+
+\subsection{Convergent Evidence: Cross-National Extension}
+
+To test whether the terrain--crime relationship generalizes beyond Japanese subsidy fraud, we examined conventional crime data in both Japan and South Korea. Within Japan, 2022 municipal theft data ($n = 871$) show consistent gradients across all categories (IRR: 0.80--0.87; see SI). In South Korea ($n = 260$ police stations), we find consistent negative associations across all major crime categories: theft (IRR = 0.77, $p = .024$), violence (IRR = 0.79, $p = .008$), homicide (IRR = 0.68, $p = .001$), and robbery (IRR = 0.77, $p = .069$, marginal), with population offset and province fixed effects. Full category breakdowns and model details appear in SI.
+
+Panel analyses confirm temporal stability. A 6-year Korean panel (2019--2024; $N = 1,548$) shows null TRI $\times$ Time interactions (all $p > .37$). An 18-year Japanese prefecture panel (2006--2023) shows stable between-prefecture correlations ($r = -0.55$, $p < .001$) with no temporal drift (TRI $\times$ Year: $p = .75$). The terrain gradient predates and postdates the pandemic.
+
+Effect magnitudes are consistent across crime types: Japanese subsidy fraud (IRR = 0.77), Korean theft (IRR = 0.77), violence (IRR = 0.79), and homicide (IRR = 0.68) all show negative terrain gradients of similar magnitude. The consistency across diverse offense types---from identity-based fraud to impulsive violence---suggests terrain shapes a general ecology of rule violation rather than operating through offense-specific mechanisms.
+
+\section{Discussion}
+
+The physical environment predicts rule violation. Across 1,742 Japanese municipalities, more rugged terrain is associated with substantially lower subsidy fraud, even under a centralized detection system designed to minimize geographic enforcement differences. The effect survives permutation inference, leave-one-prefecture-out replications, and monotonic dose--response tests. Converging analyses in Japan and South Korea further suggest that the terrain gradient generalizes beyond a single program to conventional crime categories and remains temporally stable (no terrain $\times$ time interactions).
+
+We interpret these findings through an ecological account of risk-taking. Crime is one form of risk-taking behavior, and risk-taking is shaped by the informational and social structure of local environments. Rugged terrain fragments populations and information flows. In such fragmented ecologies, coordination is more costly and uncertainty about others' behavior is higher, which can increase the appeal of stronger governance solutions \parencite{tsudaka2025rugged}. At the same time, rugged ecologies often produce bounded community structures in which social information is locally dense. When neighbors know what you do, identity-based deception becomes difficult: the expected costs of being exposed rise not only through formal punishment but also through reputational damage and informal sanctioning. Under this view, ruggedness reduces the viability of illicit solutions by increasing informal observability and shrinking the space for anonymous deception.
+
+This perspective supports a functional view of crime as problem-solving under constraint. The key implication is not that constrained ecologies necessarily produce more crime, but that ecologies structure which ``solutions'' are feasible: some environments make illicit strategies easy to coordinate and hard to detect, whereas others make them socially visible and therefore risky. Flat, highly connected environments can enable anonymity and ``structural holes'' that facilitate coordination among offenders \parencite{burt1992structural}, increasing the feasibility of organized deception. Rugged environments, by contrast, can reduce that feasibility by increasing local observability and the costs of misrepresentation.
+
+The present results are most diagnostic for one primary pathway: \textit{observability shapes deception feasibility}. The centralized detection setting rules out enforcement variation, leaving local observability as the key varying input. The voter-turnout finding (higher civic engagement in rugged areas) and the coordination gradient (stronger effects for identity-based fraud than for impulsive crime) both align with this account. Alternative channels---demographic composition, economic opportunity, cultural tightness---are compatible with the pattern but less directly tested here. The observability pathway provides the most parsimonious explanation given the design.
+
+Limitations follow from the administrative nature of the fraud outcome. Published cases reflect a specific stage of detection and repayment. Although centralized procedures reduce geographic enforcement heterogeneity, selection processes could still introduce bias if they correlate with terrain through unobserved channels. The persistence of the terrain gradient across robustness tests and its convergence with conventional crime gradients reduces the plausibility of a purely administrative artifact.
+
+Digitization standardizes intake but does not standardize social ecology. Even in a system designed to eliminate geographic heterogeneity in enforcement, rule violation remains patterned by the physical environment. Settlement patterns and community boundedness reflect long-run geography, even as administrative boundaries have changed---strengthening the case that ecology, not recent selection, drives the pattern.
+
+A broader implication is that ecological constraints shape whether risk is channeled by formal institutions and informal social monitoring or externalized as crime. From a policy perspective, community design may matter as much as surveillance technology: environments that foster mutual acquaintanceship may reduce fraud more effectively than algorithmic monitoring alone.
+
+Terrain creates predictable variation in community observability and coordination structure. If terrain shapes fraud, what other behavioral outcomes---trust, cooperation, norm adherence---reflect the same ecological logic? The present findings offer a tractable, measurable foundation for future work on how physical environments shape the psychology of risk-taking and rule adherence.
+
+\printbibliography
+
+\end{document}
