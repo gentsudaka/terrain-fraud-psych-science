@@ -12,7 +12,7 @@ Rugged terrain → lower fraud rates. Japan (N=1,742 municipalities) and Korea (
 data/
 ├── analytical_dataset.csv    # Main analysis (N=1,742)
 ├── japan_panel/              # 18-year panel
-└── korea/                    # Cross-national replication
+└── korea/                    # Korea analysis
 ```
 
 ## Code
