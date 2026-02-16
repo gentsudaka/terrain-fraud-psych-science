@@ -65,6 +65,13 @@ python code/05_supplementary.py
 | Population | 2020 Census, e-Stat |
 | Korea crime | Korean National Police Agency, data.go.kr |
 
+## Author
+
+**Gen Tsudaka, PhD**  
+Postdoctoral Research Scholar, Columbia Business School  
+PhD, Psychology, The New School for Social Research  
+[GitHub](https://github.com/gentsudaka) · [ORCID](https://orcid.org/0000-0002-8969-5763)
+
 ## License
 
 MIT License. See [LICENSE](LICENSE).
