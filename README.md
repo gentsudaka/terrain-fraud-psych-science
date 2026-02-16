@@ -30,4 +30,4 @@ Columbia Business School · The New School for Social Research
 
 ## License
 
-MIT
+© 2026 Gen Tsudaka. All Rights Reserved. [Contact for permission](mailto:tsudaka@pm.me).
